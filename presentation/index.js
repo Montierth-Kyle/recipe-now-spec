@@ -11,7 +11,8 @@ import {
   List,
   Quote,
   Slide,
-  Text
+  Text,
+  Image
 } from "spectacle";
 
 // Import image preloader util
@@ -26,18 +27,18 @@ require("spectacle/lib/themes/default/index.css");
 
 
 const images = {
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  foodcard1: require("../assets/foodcard1.jpg"),
+  foodcardswipe: require("../assets/foodcardswipe.jpg"),
+  foodcardheart: require("../assets/foodcardheart.jpg"),
+  foodcardhistory: require("../assets/foodcardhistory.jpg"),
 };
 
 preloader(images);
 
 const theme = createTheme({
   primary: "white",
-  secondary: "#1F2022",
-  tertiary: "#03A9FC",
+  secondary: "red",
+  tertiary: "black",
   quartenary: "#CECECE"
 }, {
   primary: "Montserrat",
@@ -48,36 +49,33 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
-        <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Food Tinder
+        <Slide transition={["zoom"]} bgColor="secondary">
+          <Heading size={1} fit lineHeight={1} textColor="primary">
+            FoodMood
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
             Stop asking what's for dinner!
           </Text>
         </Slide>
         <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>Typography</Heading>
-          <Heading size={1} textColor="secondary">Heading 1</Heading>
-          <Heading size={2} textColor="secondary">Heading 2</Heading>
-          <Heading size={3} textColor="secondary">Heading 3</Heading>
-          <Heading size={4} textColor="secondary">Heading 4</Heading>
-          <Heading size={5} textColor="secondary">Heading 5</Heading>
-          <Text size={6} textColor="secondary">Standard text</Text>
+          <Heading size={6} textColor="primary" caps>We bring you the recipes </Heading>
+          <Heading size={3} textColor="secondary">Just swipe to see your options</Heading>
+          <Image src={images.foodcardswipe}/>
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>Standard List</Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={6} textColor="secondary" caps>Once you have found something</Heading>
+          <Heading size={3} textColor="tertiary">Press on the heart to save and see the recipe</Heading>
+          <Image src={images.foodcardheart}/>
         </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Slide transition={["fade"]} bgColor="secondary">
+          <Heading size={6} textColor="tertiary" caps>Don't cook the same things</Heading>
+          <Heading size={3} textColor="primary">Just select that you have cooked a recipe</Heading>
+          <Image src={images.foodcardhistory}/>
+        </Slide>
+        <Slide transition={["zoom"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
+            <Quote>I don't know... What do you want to eat?</Quote>
+            <Cite>Every Person Ever</Cite>
           </BlockQuote>
         </Slide>
       </Deck>
